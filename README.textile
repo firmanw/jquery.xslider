@@ -1,8 +1,8 @@
 h1. jQuery xFade
 
-"http://xslider.codapixa.com/":http://xslider.codapixa.com/
-
 Yet another slideshow plugin for jQuery. The goals is to accept on demand changes while take care the slides to keep running smoothly at the same time without break things. xSlider algorithm was originally based from "jQuery Innerfade":http://medienfreunde.com/lab/innerfade/jQuery InnerFade by Torsten Baldes.
+
+Download the production version at "http://xslider.codapixa.com/":http://xslider.codapixa.com/
 
 &copy; 2011 Firman Wandayandi.
 
