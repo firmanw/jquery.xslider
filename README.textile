@@ -6,7 +6,43 @@ Download the production version at "http://xslider.codapixa.com/":http://xslider
 
 &copy; 2011 Firman Wandayandi.
 
-h2. Demo
+h2. Features
+
+* Support any HTML elements
+* No css required, styling at your needs!
+* Slides looping
+* Refresh utility function to replica the slides on the fly without break the running animation (handy for AJAX calls)
+* 4 transition effects (slide, roll, fall and fade)
+* 3 callbacks provided (onLoaded, onBefore and onComplete)
+* Auto play
+* Playback control play, pause and stop
+* Supports auto generated pagination or custom navigation
+* Auto generated Previous and Next navigation
+* Pause on mouse over (auto play mode only)
+* Uses HTML5 valid markup
+* Animated auto adjust the slide dimension
+* Utilities shortcut functions to control the slide
+
+h2. Future Additions
+
+* Enable to set the number of items per slide
+* Added more transition effects
+
+h2. License
+
+Licensed under the Apache License, Version 2.0 (the “License”);
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+"http://www.apache.org/licenses/LICENSE-2.0":http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an “AS IS” BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
+h2. Examples
 
 "Basic implementation":http://xslider.codapixa.com/examples/basic.html
 "Styling guide":http://xslider.codapixa.com/examples/styling.html
@@ -15,23 +51,26 @@ h2. Demo
 h2. Usage
 
 The scipts
-<pre><code><script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-<script type="text/javascript" src="jquery.xslider.min.js"></script></code></pre>
+<pre><code>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script type="text/javascript" src="jquery.xslider.min.js"></script>
+</code></pre>
 
 The HTML
 <pre><code><ul id="slide">
   <li>First</li>
   <li>Second</li>
   <li>Third</li>
-</ul></code</pre>
+</ul></code></pre>
 
 The Stylesheet
 <pre><code>/* No styling required */</code></pre>
 
 Initialization
-<pre><code>$(document).ready(function() {
-  $('#container').xslider();
-});</code></pre>
+<pre><code><script type="text/javascript">
+$(document).ready(function() {
+  $('#slide').xslider();
+});</script></code></pre>
 
 h2. Available Options
 
@@ -70,17 +109,3 @@ Get the slideshow status which returns an object consist with properties: state,
 *$('#slides').xsliderRefresh()*
 Refresh the slide after committed the changes.
 
-
-h2. License
-
-Licensed under the Apache License, Version 2.0 (the “License”);
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-
-"http://www.apache.org/licenses/LICENSE-2.0":http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an “AS IS” BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
