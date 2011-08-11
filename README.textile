@@ -21,7 +21,7 @@ h2. Features
 * Pause on mouse over (auto play mode only)
 * Uses HTML5 valid markup
 * Animated auto adjust the slide dimension
-* Utilities shortcut functions to control the slide
+* Utility method calls to control the slides
 
 h2. Future Additions
 
@@ -92,20 +92,23 @@ h2. Available Options
 * *onBefore*: A function to call before run the animation. It receives the following arguments: current item index, last item index, current item, last item and items collection. (_Default: null_)
 * *onComplete*: A function to call once the animation complete. It receives the following arguments: current item index, last item index, current item, last item and items collection. (_Default: null_)
 
-h2. Utilities
+h2. Utility Method Calls
 
-*$('#slides').xsliderPlay()*
+*$('#slides').xslider('play')*
 Command the slideshow playback to play.
 
-*$('#slides').xsliderStop()*
+*$('#slides').xslider('stop)*
 Command the slideshow playback to stop.
 
-*$('#slides').xsliderPause()*
+*$('#slides').xslider('pause')*
 Command the slideshow playback to pause.
 
-*$('#slides').xsliderStatus()*
+*$('#slides').xslider('goto', _[item]_)*
+Set the slide to goto supplied item which the _[item]_ is slide index number or jQuery object of the item.
+
+*$('#slides').xslider('status')*
 Get the slideshow status which returns an object consist with properties: state, current and last.
 
-*$('#slides').xsliderRefresh()*
-Refresh the slide after committed the changes.
+*$('#slides').xslider('refresh')*
+Refresh the slide after committed the changes to the slides.
 
