@@ -39,12 +39,7 @@ footer {
   padding: 0 10px;
 }
 
-/* -- xSlider CORE */
-#slide {
-  height: 300px; /* Important setup */
-}
-
-/* -- STYLING THE COMPONENTS */
+/* -- STYLING THE COMPONENTS (xSlider doesn't requires these) */
 /* Blocks layout */
 #slide-wrapper {
   width: 620px;
@@ -151,7 +146,7 @@ footer {
 }
 </style>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-<script type="text/javascript" src="../source/jquery.xslider.min.js"></script>
+<script type="text/javascript" src="../source/jquery.xslider.js"></script>
 <script type="text/javascript">
 $(document).ready(function() {
   $('#slide').xslider({
@@ -221,10 +216,10 @@ $(document).ready(function() {
 <article>
   <div id="slide-wrapper">
     <ul id="slide">
-      <li><img src="images/finding-nemo.jpg" width="600" height="300" alt="Finding Nemo"></li>
-      <li><img src="images/monsters-inc.jpg" width="600" height="300" alt="Monster Inc."></li>
-      <li><img src="images/wall-e.jpg" width="600" height="300" alt="WALL-E"></li>
-      <li><img src="images/up.jpg" width="600" height="300" alt="Up!"></li>
+      <li><div class="caption">Finding Nemo</div><img src="images/finding-nemo.jpg" width="600" height="300" alt="Finding Nemo"></li>
+      <li><div class="caption">Monster Inc.</div><img src="images/monsters-inc.jpg" width="600" height="300" alt="Monster Inc."></li>
+      <li><div class="caption">WALL-E</div><img src="images/wall-e.jpg" width="600" height="300" alt="WALL-E"></li>
+      <li><div class="caption">Up!</div><img src="images/up.jpg" width="600" height="400" alt="Up!"></li>
     </ul>
     <a id="playback" href="xslider-playback" class="play">Play</a>
   </div>
