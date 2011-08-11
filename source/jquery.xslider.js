@@ -1,6 +1,7 @@
 /*
- * jQuery xSlider 1.0
+ * jQuery xSlider
  * http://xslider.codapixa.com/
+ * Version 1.0-beta1
  *
  * Copyright (c) 2011 Firman Wandayandi
  * Licensed under the Apache License, Version 2.0 http://www.apache.org/licenses/LICENSE-2.0
@@ -9,6 +10,32 @@
 (function($) {
 
     $.fn.xslider = function(options) {
+        // Check if it is a method call
+        if (typeof arguments[0] === 'string') {
+            switch (arguments[0]) {
+                case 'goto':
+                    if (typeof arguments[1] != 'undefined') $(this).data('xslider:instance').goto(arguments[1]);
+                    break;
+                case 'play':
+                    $(this).data('xslider:instance').play();
+                    break;
+                case 'stop':
+                    $(this).data('xslider:instance').stop();
+                    break;
+                case 'pause':
+                    $(this).data('xslider:instance').pause();
+                    break;
+                case 'status':
+                    return $(this).data('xslider:instance').status();
+                    break;
+                case 'refresh':
+                    $(this).data('xslider:instance').refresh();
+                    break;
+            }
+            return;
+        }
+
+        // Creates the xSlider
         return this.each(function() {
             // The xSlider object
             var xslider = {
@@ -96,6 +123,9 @@
                         // Calls the onLoaded callback function
                         self.onLoaded(self.current, self.last, $(elements[self.current]), $(elements[self.last]), elements);
                     });
+                    
+                    // Set the state
+                    $(self.container).data('xslider:playback', 'standby');
 
                     // Play the animation if auto play
                     if (self.settings.autoPlay) self.play();
@@ -180,7 +210,7 @@
                     if (match != null) {
                         // Stop the autoplay
                         this.stop();
-                        this.to(match[1]);
+                        this.goto(match[1]);
                     }
                 },
 
@@ -234,9 +264,11 @@
                         $(elements[self.last]).css({'z-index': 0});
                         $(elements[self.current]).css({'top': - $(elements[self.current]).outerHeight(), 'display': '', 'z-index': 1});
 
+                        // Hide the last slide
+                        $(elements[self.last]).fadeOut(self.settings.speed);
+
                         // Complete position
                         $(elements[self.current]).animate({'top': 0}, self.settings.speed, self.settings.easing, function() {
-                            $(elements[self.last]).fadeOut('fast');
                             self.onComplete(self.current, self.last, $(elements[self.current]), $(elements[self.last]), elements);
                         });
                     } else if (self.settings.effect == 'fade') { // Fade
@@ -252,8 +284,8 @@
                 },
 
                 // Go to the element
-                // The element may and integer of slide item index or a jQuery object
-                to: function(element) {
+                // The element may an integer of slide item index or a jQuery object
+                goto: function(element) {
                     var self = this;
 
                     if (typeof(element) == 'object' && element.jquery) {
@@ -284,7 +316,7 @@
                         if (next > this.items().length - 1) next = 0;
                     }
 
-                    this.to(next);
+                    this.goto(next);
                 },
                 
                 // Go to the previous item
@@ -299,7 +331,7 @@
                         if (prev < 0) prev = self.items().length - 1;
                     }
 
-                    this.to(prev);
+                    this.goto(prev);
                 },
                 
                 // Start the playback
@@ -340,7 +372,7 @@
                     var self = this;
 
                     return {
-                        state: self.state,
+                        state: $(self.container).data('xslider:playback'),
                         current: self.current,
                         last: self.last
                     };
@@ -380,30 +412,6 @@
             // Store the xSlider instance
             $(this).data('xslider:instance', xslider);
         });
-    };
-
-    $.fn.xsliderTo = function(item) {
-        $(this).data('xslider:instance').to(item);
-    };
-
-    $.fn.xsliderPlay = function() {
-        $(this).data('xslider:instance').play();
-    }
-
-    $.fn.xsliderStop = function() {
-        $(this).data('xslider:instance').stop();
-    }
-
-    $.fn.xsliderPause = function() {
-        $(this).data('xslider:instance').pause();
-    }
-
-    $.fn.xsliderStatus = function() {
-        return $(this).data('xslider:instance').status();
-    }
-
-    $.fn.xsliderRefresh = function(item) {
-        $(this).data('xslider:instance').refresh();
     };
 
 })(jQuery);
