@@ -47,9 +47,7 @@
                 
                 // Initialization
                 init: function(container, options) {
-                    var self = this,
-                        maxwidth = 0,
-                        maxheight = 0;
+                    var self = this;
 
                     if (options) $.extend(self.settings, options);
 
@@ -77,18 +75,14 @@
                         alert('xslider:order must either be \'sequence\', \'random\' or \'random-start\'');
                     }
 
-                    for (var i = 0; i < elements.length; i++) {
-                        maxwidth = Math.max(maxwidth, $(elements[i]).width());
-                        maxheight = Math.max(maxheight, $(elements[i]).height());
-                    };
-                    
                     // Calls the setup routine
                     self.setup(false);
 
                     // Setup the slide container
                     $(self.container).css({
                         position: 'relative',
-                        height: self.settings.height != null ? self.settings.height : maxheight,
+                        width: $(elements[0]).width(),
+                        height: $(elements[0]).height(),
                         overflow: 'hidden'
                     });
                     
@@ -208,6 +202,8 @@
                     var elements = self.items();
 
                     self.onBefore(self.current, self.last, $(elements[self.current]), $(elements[self.last]), elements);
+
+                    $(self.container).animate({'height': $(elements[self.current]).height(), 'width': $(elements[self.current]).width()}, self.settings.speed);
 
                     if (self.settings.effect == 'slide') { // Slide
                         var width = $(self.container).width()
