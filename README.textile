@@ -26,9 +26,7 @@ The HTML
 </ul></code</pre>
 
 The Stylesheet
-<pre><code>#slide {
-  height: 300px; /* Important setup */
-}</code></pre>
+<pre><code>/* No styling required */</code></pre>
 
 Initialization
 <pre><code>$(document).ready(function() {
