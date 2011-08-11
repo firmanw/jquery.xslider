@@ -3,7 +3,7 @@
  * http://xslider.codapixa.com/
  *
  * Copyright (c) 2011 Firman Wandayandi
- * Dual licensed under the MIT and GPL licenses.
+ * Licensed under the Apache License, Version 2.0 http://www.apache.org/licenses/LICENSE-2.0
  */
 
 (function($) {
