@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1024">
+<meta name="keywords" content="jquery fade, jquery fade with control, jquery slideshow, javascript slideshow, image transition">
+<meta name="description" content="A jQuery plugin to fade/slide the elements inside the container with the controls">
+<meta name="copyright" content="&copy; 2011 Firman Wandayandi">
+<meta name="author" content="Firman Wandayandi">
+<title>xSlider, on demand jQuery slideshow plugin</title>
+<link rel="stylesheet" type="text/css" href="style.css" />
+</head>
+<body>
+<div id="container">
+<header>
+  <h1>xSlider</h1>
+  <hr>
+</header>
+
+<article>
+  <section id="summary">
+    <p>Version 1.0</p>
+    <p>Yet another slideshow plugin for jQuery. The goals is to accept on demand changes while take care the slides to keep running smoothly at the same time without break things. xSlider algorithm was originally based/extended from <a href="http://medienfreunde.com/lab/innerfade/">jQuery InnerFade</a> by <a href="http://medienfreunde.com/">Torsten Baldes</a>.</p>
+  </section>
+
+  <section id="usage">
+
+    <h2>Usage</h2>
+
+    <p>The scripts</p>
+    <pre><code>&lt;script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" src="jquery.xslider.min.js"&gt;&lt;/script&gt;</code></pre>
+
+    <p>The HTML</p>
+    <pre><code>&lt;ul id=&quot;slide&quot;&gt;
+  &lt;li&gt;First&lt;/li&gt;
+  &lt;li&gt;Second&lt;/li&gt;
+  &lt;li&gt;Third&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+
+    <p>The stylesheet</p>
+    <pre><code>#slide {
+  height: 300px; /* Important setup */
+}</code></pre>
+
+    <p>Initialization</p>
+    <pre><code>$(document).ready(function() {
+  $('#slide').xslider();
+});</code></pre>
+
+  </section>
+
+  <section id="settings">
+
+    <h2>Available Options</h2>
+
+    <table id="options">
+    <tr><th id="key">Name</th><th id="default">Default</th><th id="description">Description</th></tr>
+    <tr>
+      <td>children</td>
+      <td>null</td>
+      <td>Slide item selector.</td>
+    </tr>
+    <tr class="alt">
+      <td>width</td>
+      <td>null</td>
+      <td>Slide item width.</td>
+    </tr>
+    <tr>
+      <td>height</td>
+      <td>null</td>
+      <td>Slide item height.</td>
+    </tr>
+    <tr class="alt">
+      <td>effect</td>
+      <td>'slide'</td>
+      <td>Animation effect. Can be set to 'slide', 'roll', 'fall' or 'fade'.</td>
+    </tr>
+    <tr>
+      <td>speed</td>
+      <td>'normal'</td>
+      <td>Animation speed in milliseconds or a keyword 'slow', 'normal' or 'fast'.</td>
+    </tr>
+    <tr class="alt">
+      <td>order</td>
+      <td>'sequence'</td>
+      <td>Items order. Can be set to 'sequence', 'random' or 'random-start'.</td>
+    </tr>
+    <tr>
+      <td>timeout</td>
+      <td>2000</td>
+      <td>Delay between transitions in milliseconds.</td>
+    </tr>
+    <tr class="alt">
+      <td>easing</td>
+      <td>null</td>
+      <td>jQuery easing animation id to use the easing animation. Requires <a href="http://gsgd.co.uk/sandbox/jquery/easing/">jQuery Easing</a> to works.</td>
+    </tr>
+    <tr>
+      <td>navigation</td>
+      <td>null</td>
+      <td>Set to <em>true</em> to auto generate the navigation or supply the jQuery selector to use own navigation.</td>
+    </tr>
+    <tr class="alt">
+      <td>prevNext</td>
+      <td>true</td>
+      <td>Specifies whether to generate the previous and next navigation or not.</td>
+    </tr>
+    <tr>
+      <td>wrapperClass</td>
+      <td>'xslider'</td>
+      <td>CSS class to added into wrapper element.</td>
+    </tr>
+    <tr class="alt">
+      <td>navigationClass</td>
+      <td>'xslider-nav'</td>
+      <td>CSS class to added into navigation element.</td>
+    </tr>
+    <tr>
+      <td>autoPlay</td>
+      <td>false</td>
+      <td>Specifies whether to play the slideshow on loaded or not.</td>
+    </tr>
+    <tr class="alt">
+      <td>pauseOnHover</td>
+      <td>true</td>
+      <td>Specifies whether to pause the slides when the mouse over on auto play mode.</td>
+    </tr>
+    <tr>
+      <td>onLoaded</td>
+      <td>null</td>
+      <td>A function to call once xSlider fully loaded. It receives the following arguments:
+      current item index, last item index, current item, last item and items collection.</td>
+    </tr>
+    <tr class="alt">
+      <td>onBefore</td>
+      <td>null</td>
+      <td>A function to call before run the animation. It receives the following arguments:
+      current item index, last item index, current item, last item and items collection.</td>
+    </tr>
+    <tr>
+      <td>onComplete</td>
+      <td>null</td>
+      <td>A function to call once the animation complete. It receives the following arguments:
+      current item index, last item index, current item, last item and items collection.</td>
+    </tr>
+    </table>
+
+  </section>
+
+  <section id="utilities">
+
+    <h2>Utilities</h2>
+
+    <dl>
+      <dt>$('#slides').xsliderPlay()</dt>
+      <dd>Command the slideshow playback to play.</dd>
+      <dt>$('#slides').xsliderStop()</dt>
+      <dd>Command the slideshow playback to stop.</dd>
+      <dt>$('#slides').xsliderPause()</dt>
+      <dd>Command the slideshow playback to pause.</dd>
+      <dt>$('#slides').xsliderStatus()</dt>
+      <dd>Get the slideshow status which returns an object consist with properties: <em>state</em>, <em>current</em> and <em>last</em>.</dd>
+      <dt>$('#slides').xsliderRefresh()</dt>
+      <dd>Refresh the slide after committed the changes.</dd>
+    </dl>
+
+  </section>
+
+  <section id="examples">
+    <h2>Examples</h2>
+    <ul>
+      <li><a href="../examples/basic.html">Basic implementation</a></li>
+      <li><a href="../examples/styling.html">Styling guide</a></li>
+      <li><a href="../examples/navigation.html">Custom navigation</a></li>
+    </ul>
+  </section>
+
+</article>
+
+<footer>
+  <hr>
+  <p>&copy; 2011 Firman Wandayandi. Forks me on <a href="http://github.com/firmanw/jquery-xslider">GitHub</a>.</p>
+</footer>
+
+</div>
+</body>
+</html>

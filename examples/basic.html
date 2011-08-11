@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1024">
+<title>Basic implementation - xSlider, on demand jQuery slideshow plugin</title>
+<style type="text/css">
+/* -- RESET */
+body {
+  margin: 40px;
+  font: 13px/1.5 Helvetica-Nueue, Helvetica, Arial, serif;
+  color: #444;
+}
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+hr {
+  background: #fff;
+  border: none;
+  height: 1px;
+  margin: 24px 0;
+}
+
+/* -- BASIC & LAYOUT ELEMENTS */
+html {
+  background: #eaf1f3;
+}
+footer {
+  text-align: center;
+}
+#wrapper {
+  width: 600px;
+  margin: auto;
+}
+#slide-wrapper {
+  overflow: hidden;
+}
+
+/* -- xSlider CORE */
+#slide {
+  height: 300px; /* Important setup */
+}
+
+/* -- xSlider COMPONENTS (style at your needs) */
+#slide-wrapper .xslider {
+  width: 600px;
+  position: relative;
+}
+#slide li,
+#slide img {
+  display: block;
+}
+
+#slide-wrapper .xslider-prevnext {
+  overflow: hidden;
+}
+  #slide-wrapper .xslider .prev {
+    float: left;
+  }
+  #slide-wrapper .xslider .next {
+    float: right;
+  }
+
+#slide-wrapper .xslider nav {
+  float: right;
+}
+  #slide-wrapper .xslider nav li {
+    float: left;
+    margin-left: 5px;
+  }
+
+/* -- PAGE ELEMENTS (not related to xSlider) */
+#slide-wrapper #playback {
+  float: left;
+}
+#append {
+  text-align: center;
+}
+</style>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script type="text/javascript" src="../source/jquery.xslider.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+  $('#slide').xslider({
+    timeout: 3000,
+    navigation: true
+  });
+  
+  // Bind the #playback
+  $('#playback').click(function() {
+    // Slide
+    var $slide = $('#slide');
+
+    // Look up the element xSlider data
+    if ($slide.data('xslider:playback') != 'play') {
+      // Calls the xSlider play function
+      $slide.xsliderPlay();
+      
+      // Set the style to stop
+      $(this).text('Stop').removeClass('play').addClass('stop');
+    } else {
+      // Calls the xSlider stop function
+      $slide.xsliderStop();
+      
+      // Set the style to play
+      $(this).text('Play').removeClass('stop').addClass('play');
+    }
+
+    return false;
+  });
+
+  // Bind the add item
+  $('a', '#append').click(function() {
+    $('#append').slideUp('normal', function() {
+      // Create the proper structure of slide item
+      var $li = $('<li />');
+      $('img', '#append').appendTo($li);
+    
+      // Append to container
+      $li.appendTo('#slide');
+
+      // Calls the xSlider refresh to update the slide
+      $('#slide').xsliderRefresh();
+
+      $(this).html('Cars 2 has been added!').slideDown();
+    });
+
+    return false;
+  });
+});
+</script>
+</head>
+<body>
+<div id="wrapper">
+
+<article>
+  <div id="slide-wrapper">
+    <ul id="slide">
+      <li><img src="images/finding-nemo.jpg"></li>
+      <li><img src="images/monsters-inc.jpg"></li>
+      <li><img src="images/wall-e.jpg"></li>
+      <li><img src="images/up.jpg"></li>
+    </ul>
+    <a id="playback" href="#xslider-playback" class="play">Play</a>
+  </div>
+  <hr>
+  <div id="append">
+    <p>This way you able use Javascript/AJAX to append an item into slide silently
+    without interrupting the animation.</p>
+    <p><img src="images/cars2.jpg"></p>
+    <p><a href="#">Add Cars 2 into slide</a></p>
+  </div>
+</article>
+
+<footer>
+  <p><small><a href="http://xslider.codapixa.com/">xSlider</a> &copy;2011 Firman Wandayandi. Images Copyright &copy; Disney/Pixar.</small></p>
+</footer>
+
+</div>
+</body>
+</html>

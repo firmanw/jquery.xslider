@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1024">
+<title>Styling guide - xSlider, on demand jQuery slideshow plugin</title>
+<style type="text/css">
+/* -- RESET */
+body {
+  margin: 40px;
+  font: 13px/1.5 Helvetica-Nueue, Helvetica, Arial, serif;
+  color: #444;
+}
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+hr {
+  background: #fff;
+  border: none;
+  height: 1px;
+  margin: 24px 0;
+}
+
+/* -- BASIC & LAYOUT ELEMENTS */
+html {
+  background: #eaf1f3;
+}
+footer {
+  text-align: center;
+}
+#wrapper {
+  width: 640px;
+  margin: auto;
+}
+#slide-wrapper {
+  overflow: hidden;
+  padding: 0 10px;
+}
+
+/* -- xSlider CORE */
+#slide {
+  height: 300px; /* Important setup */
+}
+
+/* -- STYLING THE COMPONENTS */
+/* Blocks layout */
+#slide-wrapper {
+  width: 620px;
+  margin: auto;
+  position: relative;
+}
+/* The xSlider wrapper */
+#slide-wrapper .xslider {
+  position: relative;
+}
+/* The xSlider slide container */
+#slide-wrapper .xslider-container {
+  padding: 9px;
+  background: #fff;
+  border: 1px solid #e7ebec;
+}
+/* Slide items */
+#slide ul {
+  list-style: none;
+  height: 300px;
+  padding: 0;
+  margin: 0;
+}
+#slide li {
+  position: relative;
+}
+#slide li,
+#slide li img {
+  display: block;
+}
+/* Slide previous & next */
+#slide-wrapper .xslider .prev,
+#slide-wrapper .xslider .next {
+  display: block;
+  width: 24px;
+  height: 45px;
+  position: absolute;
+  top: 140px;
+  background-image: url(images/controls.png);
+  background-repeat: no-repeat;
+  text-indent: -131313px;
+  z-index: 6;
+}
+#slide-wrapper .xslider .prev {
+  left: -5px;
+}
+#slide-wrapper .xslider .next {
+  right: -5px;
+  background-position: -28px 0;
+}
+/* Slide navigation */
+#slide-wrapper .xslider nav {
+  overflow: hidden;
+  margin-top: 10px;
+  float: right;
+}
+#slide-wrapper .xslider nav ul {
+  margin: 0;
+  padding: 0;
+}
+#slide-wrapper .xslider nav li {
+  display: inline;
+  float: left;
+  margin-left: 3px;
+}
+#slide-wrapper .xslider nav a {
+  width: 13px;
+  height: 13px;
+  display: block;
+  background: url(images/controls.png) -26px -45px no-repeat;
+  text-indent: -131313px;
+}
+#slide-wrapper .xslider nav a.current {
+  background-position: -39px -45px;
+}
+
+/* -- PAGE ELEMENTS (not related to xSlider) */
+#slide-wrapper #slide .caption {
+  position: absolute;
+  bottom: 0;
+  background: rgba(0, 0, 0, .5);
+  color: #fff;
+  padding: 10px;
+  width: 100%;
+  display: none;
+}
+#slide-wrapper #playback {
+  display: block;
+  width: 13px;
+  height: 13px;
+  background-image: url(images/controls.png);
+  background-repeat: no-repeat;
+  text-indent: -131313px;
+  margin-top: 10px;
+}
+#slide-wrapper .play {
+  background-position: 0 -45px;
+}
+#slide-wrapper .pause {
+  background-position: -13px -45px;
+}
+#append {
+  text-align: center;
+}
+</style>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script type="text/javascript" src="../source/jquery.xslider.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+  $('#slide').xslider({
+    timeout: 3000,
+    effect: 'roll',
+    navigation: true,
+    onLoaded: function(current, last, currentItem, lastItem, elements) {
+      $('.caption', currentItem).fadeIn(200);
+    },
+    onBefore: function(current, last, currentItem, lastItem, elements) {
+      $('.caption', lastItem).hide();
+      $('.caption', currentItem).hide();
+    },
+    onComplete: function(current, last, currentItem, lastItem, elements) {
+      $('.caption', currentItem).fadeIn(200);
+    }
+  });
+  
+  // Bind the #playback
+  $('#playback').click(function() {
+    // Slide
+    var $slide = $('#slide');
+    
+    // Look up the element xSlider data
+    if ($slide.data('xslider:playback') != 'play') {
+      // Calls the xSlider play function
+      $slide.xsliderPlay();
+      
+      // Set the style to pause
+      $(this).text('Pause').removeClass('play').addClass('pause');
+    } else {
+      // Calls the xSlider pause function
+      $slide.xsliderPause();
+      
+      // Set the style to play
+      $(this).text('Play').removeClass('pause').addClass('play');
+    }
+
+    return false;
+  });
+  
+  // Bind the add item
+  $('a', '#append').click(function() {
+    $('#append').slideUp('normal', function() {
+      // Create the proper structure slide item
+      var $li = $('<li />');
+      $('img', '#append').appendTo($li);
+      $('<div class="caption">Cars 2</div>').prependTo($li);
+    
+      // Append to container
+      $li.appendTo('#slide');
+
+      // Calls the xSlider refresh to update the slide
+      $('#slide').xsliderRefresh();
+
+      $(this).html('Cars 2 has been added!').slideDown();
+    });
+
+    return false;
+  });
+});
+</script>
+</head>
+<body>
+<div id="wrapper">
+
+<article>
+  <div id="slide-wrapper">
+    <ul id="slide">
+      <li><div class="caption">Finding Nemo</div><img src="images/finding-nemo.jpg"></li>
+      <li><div class="caption">Monster .Inc</div><img src="images/monsters-inc.jpg"></li>
+      <li><div class="caption">WALL-E</div><img src="images/wall-e.jpg"></li>
+      <li><div class="caption">Up!</div><img src="images/up.jpg"></li>
+    </ul>
+    <a id="playback" href="xslider-playback" class="play">Play</a>
+  </div>
+  <hr>
+  <div id="append">
+    <p>This way you able use Javascript/AJAX to append an item into slide silently
+    without interrupting the animation.</p>
+    <p><img src="images/cars2.jpg"></p>
+    <p><a href="#">Add Cars 2 into slide</a></p>
+  </div>
+</article>
+
+<footer>
+  <p><small><a href="http://xslider.codapixa.com/">xSlider</a> &copy;2011 Firman Wandayandi. Images Copyright &copy; Disney/Pixar.</small></p>
+</footer>
+
+</div>
+</body>
+</html>

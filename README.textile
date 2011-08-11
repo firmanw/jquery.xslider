@@ -1,0 +1,51 @@
+h1. jQuery xFade
+
+Yet another slideshow plugin for jQuery. The goals is to accept on demand changes while take care the slides to keep running smoothly at the same time without break things. xSlider algorithm was originally based from "jQuery Innerfade":http://medienfreunde.com/lab/innerfade/jQuery InnerFade by Torsten Baldes.
+
+h2. Usage
+
+The scipts
+<pre><code><script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script type="text/javascript" src="jquery.xslider.min.js"></script></code></pre>
+
+The HTML
+<pre><code><ul id="slide">
+  <li>First</li>
+  <li>Second</li>
+  <li>Third</li>
+</ul></code</pre>
+
+The Stylesheet
+<pre><code>#slide {
+  height: 300px; /* Important setup */
+}</code></pre>
+
+Initialization
+<pre><code>$(document).ready(function() {
+  $('#container').xslider();
+});</code></pre>
+
+h2. Available Options
+* *children*: Slide item selector. (_Default: null_)
+* *width*: Slide item width. (_Default: null_)
+* *height*: Slide item height. (_Default: null_)
+* *effect*: Animation effect. Can be set to 'slide', 'roll', 'fall' or 'fade'. (_Default: 'slide'_)
+* *speed*: Animation speed in milliseconds or a keyword 'slow', 'normal' or 'fast'. (_Default: 'normal'_)
+* *order*: Items order. Can be set to 'sequence', 'random' or 'random-start'. (_Default: 'sequence'_)
+* *timeout*: Delay between transitions in milliseconds (_Default: '2000'_)
+* *easing*: jQuery Easing animation id to use the easing animation. Requires "jQuery Easing":http://gsgd.co.uk/sandbox/jquery/easing/ to works. (_Default: null_)
+* *navigation*: Set to true to auto generate the navigation or supply the jQuery selector to use own navigation. (_Default: null_)
+* *prevNext*: Specifies whether to generate the previous and next navigation or not. (_Default: true_)
+* *wrapperClass*: CSS class to added into wrapper element. (_Default: 'xslider'_)
+* *navigationClass*: CSS class to added into navigation element. (_Default: 'xslider-nav'_)
+* *autoPlay*: Specifies Whether to play the slideshow on loaded or not. (_Default: false_)
+* *pauseOnHover*: Specifies whether to pause the slides when the mouse over on auto play mode. (_Default: true_)
+* *onLoaded*: A function to call once xSlider fully loaded. It receives the following arguments: current item index, last item index, current item, last item and items collection. (_Default: null_)
+* *onBefore*: A function to call before run the animation. It receives the following arguments: current item index, last item index, current item, last item and items collection. (_Default: null_)
+* *onComplete*: A function to call once the animation complete. It receives the following arguments: current item index, last item index, current item, last item and items collection. (_Default: null_)
+
+h2. Demo
+
+"Basic implementation":http://xslider.codapixa.com/examples/basic.html
+"Styling guide":http://xslider.codapixa.com/examples/styling.html
+"Custom navigation":http://xslider.codapixa.com/examples/navigation.html
