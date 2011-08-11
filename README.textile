@@ -1,6 +1,16 @@
 h1. jQuery xFade
 
+"http://xslider.codapixa.com/":http://xslider.codapixa.com/
+
 Yet another slideshow plugin for jQuery. The goals is to accept on demand changes while take care the slides to keep running smoothly at the same time without break things. xSlider algorithm was originally based from "jQuery Innerfade":http://medienfreunde.com/lab/innerfade/jQuery InnerFade by Torsten Baldes.
+
+&copy; 2011 Firman Wandayandi.
+
+h2. Demo
+
+"Basic implementation":http://xslider.codapixa.com/examples/basic.html
+"Styling guide":http://xslider.codapixa.com/examples/styling.html
+"Custom navigation":http://xslider.codapixa.com/examples/navigation.html
 
 h2. Usage
 
@@ -26,6 +36,7 @@ Initialization
 });</code></pre>
 
 h2. Available Options
+
 * *children*: Slide item selector. (_Default: null_)
 * *width*: Slide item width. (_Default: null_)
 * *height*: Slide item height. (_Default: null_)
@@ -44,8 +55,34 @@ h2. Available Options
 * *onBefore*: A function to call before run the animation. It receives the following arguments: current item index, last item index, current item, last item and items collection. (_Default: null_)
 * *onComplete*: A function to call once the animation complete. It receives the following arguments: current item index, last item index, current item, last item and items collection. (_Default: null_)
 
-h2. Demo
+h2. Utilities
 
-"Basic implementation":http://xslider.codapixa.com/examples/basic.html
-"Styling guide":http://xslider.codapixa.com/examples/styling.html
-"Custom navigation":http://xslider.codapixa.com/examples/navigation.html
+*$('#slides').xsliderPlay()*
+Command the slideshow playback to play.
+
+*$('#slides').xsliderStop()*
+Command the slideshow playback to stop.
+
+*$('#slides').xsliderPause()*
+Command the slideshow playback to pause.
+
+*$('#slides').xsliderStatus()*
+Get the slideshow status which returns an object consist with properties: state, current and last.
+
+*$('#slides').xsliderRefresh()*
+Refresh the slide after committed the changes.
+
+
+h2. License
+
+Licensed under the Apache License, Version 2.0 (the “License”);
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+"http://www.apache.org/licenses/LICENSE-2.0":http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an “AS IS” BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
