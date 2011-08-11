@@ -77,13 +77,13 @@
                         alert('xslider:order must either be \'sequence\', \'random\' or \'random-start\'');
                     }
 
-                    // Calls the setup routine
-                    self.setup(false);
-
                     for (var i = 0; i < elements.length; i++) {
                         maxwidth = Math.max(maxwidth, $(elements[i]).width());
                         maxheight = Math.max(maxheight, $(elements[i]).height());
                     };
+                    
+                    // Calls the setup routine
+                    self.setup(false);
 
                     // Setup the slide container
                     $(self.container).css({
