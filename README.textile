@@ -1,8 +1,8 @@
-h1. jQuery xFade
+h1. xSlider
 
-Yet another slideshow plugin for jQuery. The goals is to accept on demand changes while take care the slides to keep running smoothly at the same time without break things. xSlider algorithm was originally based from "jQuery Innerfade":http://medienfreunde.com/lab/innerfade/jQuery InnerFade by Torsten Baldes.
+Yet another slideshow plugin for jQuery. The goals is to accept on demand changes while take care the slides to keep running smoothly at the same time without break things.
 
-Download the production version at "http://xslider.codapixa.com/":http://xslider.codapixa.com/
+Download the stable version at "http://xslider.codapixa.com/":http://xslider.codapixa.com/
 
 &copy; 2011 Firman Wandayandi.
 
@@ -22,6 +22,7 @@ h2. Features
 * Uses HTML5 valid markup
 * Animated auto adjust the slide dimension
 * Utility method calls to control the slides
+* Works in Firefox, Safari, Google Chrome, Opera and Internet Explorer
 
 h2. Future Additions
 
@@ -94,21 +95,27 @@ h2. Available Options
 
 h2. Utility Method Calls
 
-*$('#slides').xslider('play')*
-Command the slideshow playback to play.
+*$('#slides').xslider( 'play' )*
+Command the slides playback to play.
 
-*$('#slides').xslider('stop)*
-Command the slideshow playback to stop.
+*$('#slides').xslider( 'stop' )*
+Command the slides playback to stop.
 
-*$('#slides').xslider('pause')*
-Command the slideshow playback to pause.
+*$('#slides').xslider( 'pause' )*
+Command the slides playback to pause.
 
-*$('#slides').xslider('goto', _[item]_)*
-Set the slide to goto supplied item which the _[item]_ is slide index number or jQuery object of the item.
+*$('#slides').xslider( 'goto', _[item]_ )*
+Set the slides to goto supplied item which the _[item]_ is slide index number or jQuery object of the item.
 
-*$('#slides').xslider('status')*
-Get the slideshow status which returns an object consist with properties: state, current and last.
+*$('#slides').xslider( 'next' )*
+Set the slides to goto next slide.
 
-*$('#slides').xslider('refresh')*
-Refresh the slide after committed the changes to the slides.
+*$('#slides').xslider( 'previous' )*
+Set the slides to goto previous slide.
+
+*$('#slides').xslider( 'status' )*
+Get the slides status which returns an object consist with properties: state, current and last.
+
+*$('#slides').xslider( 'refresh' )*
+Refresh the slides after committed the changes to the slides.
 
