@@ -14,7 +14,13 @@
         if (typeof arguments[0] === 'string') {
             switch (arguments[0]) {
                 case 'goto':
-                    if (typeof arguments[1] != 'undefined') $(this).data('xslider:instance').goto(arguments[1]);
+                    if (typeof arguments[1] != 'undefined') $(this).data('xslider:instance').to(arguments[1]);
+                    break;
+                case 'next':
+                    $(this).data('xslider:instance').next();
+                    break;
+                case 'previous':
+                    $(this).data('xslider:instance').prev();
                     break;
                 case 'play':
                     $(this).data('xslider:instance').play();
@@ -210,7 +216,7 @@
                     if (match != null) {
                         // Stop the autoplay
                         this.stop();
-                        this.goto(match[1]);
+                        this.to(match[1]);
                     }
                 },
 
@@ -285,7 +291,7 @@
 
                 // Go to the element
                 // The element may an integer of slide item index or a jQuery object
-                goto: function(element) {
+                to: function(element) {
                     var self = this;
 
                     if (typeof(element) == 'object' && element.jquery) {
@@ -316,7 +322,7 @@
                         if (next > this.items().length - 1) next = 0;
                     }
 
-                    this.goto(next);
+                    this.to(next);
                 },
                 
                 // Go to the previous item
@@ -331,7 +337,7 @@
                         if (prev < 0) prev = self.items().length - 1;
                     }
 
-                    this.goto(prev);
+                    this.to(prev);
                 },
                 
                 // Start the playback

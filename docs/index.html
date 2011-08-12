@@ -19,7 +19,7 @@
 
 <article>
   <section id="summary">
-    <p>Version 1.0</p>
+    <p>Version 1.0-beta1</p>
     <p>Yet another slideshow plugin for jQuery. The goals is to accept on demand changes while take care the slides to keep running smoothly at the same time without break things. xSlider algorithm was originally based/extended from <a href="http://medienfreunde.com/lab/innerfade/">jQuery InnerFade</a> by <a href="http://medienfreunde.com/">Torsten Baldes</a>.</p>
   </section>
 
@@ -148,19 +148,25 @@
 
   <section id="utilities">
 
-    <h2>Utilities</h2>
+    <h2>Utility Method Calls</h2>
 
     <dl>
-      <dt>$('#slides').xsliderPlay()</dt>
-      <dd>Command the slideshow playback to play.</dd>
-      <dt>$('#slides').xsliderStop()</dt>
-      <dd>Command the slideshow playback to stop.</dd>
-      <dt>$('#slides').xsliderPause()</dt>
-      <dd>Command the slideshow playback to pause.</dd>
-      <dt>$('#slides').xsliderStatus()</dt>
-      <dd>Get the slideshow status which returns an object consist with properties: <em>state</em>, <em>current</em> and <em>last</em>.</dd>
-      <dt>$('#slides').xsliderRefresh()</dt>
-      <dd>Refresh the slide after committed the changes.</dd>
+      <dt>$('#slides').xslider( 'play' )</dt>
+      <dd>Command the slides playback to play.</dd>
+      <dt>$('#slides').xslider( 'stop' )</dt>
+      <dd>Command the slides playback to stop.</dd>
+      <dt>$('#slides').xslider( 'pause' )</dt>
+      <dd>Command the slides playback to pause.</dd>
+      <dt>$('#slides').xslider( 'goto', [item] )</dt>
+      <dd>Set the slides to goto supplied item which the [item] is slide index number or jQuery object of the item.</dd>
+      <dt>$('#slides').xslider( 'next' )</dt>
+      <dd>Set the slides to goto next slide.</dd>
+      <dt>$('#slides').xslider( 'previous' )</dt>
+      <dd>Set the slides to goto previous slide.</dd>
+      <dt>$('#slides').xslider( 'status' )</dt>
+      <dd>Get the slides status which returns an object consist with properties: <em>state</em>, <em>current</em> and <em>last</em>.</dd>
+      <dt>$('#slides').xslider( 'refresh' )</dt>
+      <dd>Refresh the slides after committed the changes.</dd>
     </dl>
 
   </section>
