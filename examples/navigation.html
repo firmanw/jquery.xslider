@@ -176,13 +176,13 @@ $(document).ready(function() {
     // Look up the element xSlider data
     if ($slide.data('xslider:playback') != 'play') {
       // Calls the xSlider play function
-      $slide.xsliderPlay();
+      $slide.xslider('play');
       
       // Set the style to pause
       $(this).text('Pause').removeClass('play').addClass('pause');
     } else {
       // Calls the xSlider pause function
-      $slide.xsliderPause();
+      $slide.xslider('pause');
       
       // Set the style to play
       $(this).text('Play').removeClass('pause').addClass('play');
@@ -211,7 +211,7 @@ $(document).ready(function() {
       $navLi.appendTo($navUl);
 
       // Calls the xSlider refresh to update the slide
-      $('#slide').xsliderRefresh();
+      $('#slide').xslider('refresh');
 
       $(this).html('Cars 2 has been added!').slideDown();
     });
