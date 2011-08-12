@@ -27,7 +27,8 @@ h2. Features
 h2. Future Additions
 
 * Enable to set the number of items per slide
-* Added more transition effects
+* Add more transition effects
+* Add preloading image support
 
 h2. License
 
