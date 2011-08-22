@@ -144,7 +144,9 @@
                     $.each(self.items(), function(i, child) {
                         if (refresh) {
                           if (i != self.current && i != self.last) $(child).css({'position': 'absolute', 'top': 0, 'left': 0, 'display': 'none'});
-                        } else $(child).css({'position': 'absolute', 'top': 0, 'left': 0, 'display': 'none'});
+                        } else {
+                          if (i != self.current) $(child).css({'position': 'absolute', 'top': 0, 'left': 0, 'display': 'none'});
+                        }
 
                         if (self.settings.effect == 'fade') $(child).css('z-index', self.items().length - i);
                         else $(child).css('z-index', 0);
